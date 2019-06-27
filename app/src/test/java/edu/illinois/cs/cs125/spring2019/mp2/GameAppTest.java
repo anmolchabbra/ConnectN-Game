@@ -1,5 +1,4 @@
-package edu.illinois.cs.cs125.spring2019.mp2;
-
+package edu.illinois.cs.cs125.spring2019.mp2
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;

@@ -46,7 +46,6 @@ public class ConnectNTest {
         Assert.assertTrue(setBoardWidth, board.setWidth(13));
         Assert.assertEquals(notSetCorrectly, 13, board.getWidth());
 
-
         /*
          * Test invalid widths.
          */
@@ -406,7 +405,7 @@ public class ConnectNTest {
         final String changeAfterStart = "Can't change dimensions after start";
         final String uninitializedBoardGet = //
                 "Calls to getBoard before initialization should return null";
-
+/*
         /*
          * Test valid sets and gets.
          */

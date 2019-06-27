@@ -306,11 +306,10 @@ public final class GameActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Gets the array index for the player who is not currently to move.
-     *
-     * @return 0 if it's Player 2's turn now, 1 otherwise.
-     */
+    private void tileClicked(int gameX, int gameY) {
+
+    }
+
     int getPlayerNotMoving() {
         if (playerToMove == 1) {
             return 0;
