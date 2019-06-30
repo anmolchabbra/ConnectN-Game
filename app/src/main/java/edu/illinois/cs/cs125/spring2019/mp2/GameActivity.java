@@ -137,6 +137,7 @@ public final class GameActivity extends AppCompatActivity {
             game = new ConnectN(game);
             setupBoard();
             playerToMove = 0;
+            //winnerLabel.setVisibility(View.GONE);
             successfulPlays.clear();
             updateDisplay();
         });
@@ -306,10 +307,20 @@ public final class GameActivity extends AppCompatActivity {
         }
     }
 
-    private void tileClicked(int gameX, int gameY) {
-
+    /**
+     * setting tile color according the player who clicked it.
+     * @param gameX game X coordinates.
+     * @param gameY game Y coordinates.
+     */
+    private void tileClicked(final int gameX, final int gameY) {
+        if (tryPlayAt(gameX, gameY)) {
+            updateDisplay();
+        }
     }
-
+    /**
+     * get the player who is not moving.
+     * @return 0 if player1 is not moving and 1 if player 2 is not moving.
+     */
     int getPlayerNotMoving() {
         if (playerToMove == 1) {
             return 0;
@@ -404,6 +415,8 @@ public final class GameActivity extends AppCompatActivity {
              */
             toPlayLabels[playerToMove].setVisibility(View.VISIBLE);
             toPlayLabels[getPlayerNotMoving()].setVisibility(View.GONE);
+            winnerLabel.setVisibility(View.GONE);
+
         } else {
             /*
              * The game is over!
@@ -413,6 +426,15 @@ public final class GameActivity extends AppCompatActivity {
              */
             for (View v : toPlayLabels) {
                 v.setVisibility(View.GONE);
+            }
+            if (winner == getPlayer(0)) {
+                winnerLabel.setTextColor(getColor(R.color.player1Color));
+                winnerLabel.setText(winner.getName() + " " + "wins!");
+                winnerLabel.setVisibility(View.VISIBLE);
+            } else {
+                winnerLabel.setTextColor(getColor(R.color.player2Color));
+                winnerLabel.setText(winner.getName() + " " + "wins!");
+                winnerLabel.setVisibility(View.VISIBLE);
             }
         }
 
